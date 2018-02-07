@@ -1,6 +1,6 @@
 '''A class that generates a graph and nodes in the graph.'''
 from AStar import Node
-class Graph
+class Graph:
     def __init__(self, heigth, width):
         self.nodes = []
         self.heigth = heigth
@@ -12,8 +12,11 @@ class Graph
                 #add the new node to the nodes list
         for x in range (0,self.width):
             for y in range (0,self.height):
-                new_node = node(Vector2(x,y))
+                new_node = node(Vector2(x,y)
                 self.nodes.append(new_node)
-        m_graph = __init__(heigth,width):
-        m_graph.create_nodes(1)
+                print new_nodes
+        Graph = __init__( self, m_graph):
+    
+
+        
 
