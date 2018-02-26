@@ -1,22 +1,49 @@
 '''A class that generates a graph and nodes in the graph.'''
 from AStar import Node
-class Graph:
-    def __init__(self, heigth, width):
+from vector2 import Vector2
+class Graph(object):
+    def __init__(self, dims):
+        self.width = dims
+        self.height = dims
+        self.totalsize = self.width * self.height
         self.nodes = []
-        self.heigth = heigth
-        self.width = width
-    def create_nodes(self):
-        #create a loop that will increment a value for a nodes x position
-            #create a loop that will increment a value for a nodes y position
-                #create a new node with the position value of x and y
-                #add the new node to the nodes list
-        for x in range (0,self.width):
-            for y in range (0,self.height):
-                new_node = node(Vector2(x,y)
-                self.nodes.append(new_node)
-                print new_nodes
-        Graph = __init__( self, m_graph):
+        id = 0
+        for i in range(0, self.height):    
+            for y in range(0, self.width):
+                n = Node(id, Vector2(i,y))
+                id = id + 1
+                self.nodes.append(n)
+class Node(object):
+    def __init__(self, guid, pos):
+        self.__guid = guid
+        self.position = pos
+    def find_neighbors(self,graph):
+        valid_neighbors = []
+        valid_neighbors.append(guid - self.dims)'''top_neighbor'''
+        valid_neighbors.append(guid + self.dims)'''bot_neighbor'''
+        valid_neighbors.append(guid - 1)'''left_neighbor'''
+        valid_neighbors.append(guid + 1)'''right_neighbor'''
+        valid_neighbors.append(guid - self.dims - 1)'''top_left'''
+        valid_neighbors.append(guid - self.dims + 1)'''top_right'''
+        valid_neighbors.append(guid + self.dims - 1)'''bot_left'''
+        valid_neighbors.append(guid + self.dims + 1)'''bot_right'''
+    def find_gscore(self,Node):
+        if ((self.postion.xpos == Node.position.xpos and self.postion.ypos != Node.position.ypos) or
+        (self.postion.xpos != Node.position.xpos and self.postion.ypos == Node.position.ypos)):
+        self.g_score = Node.g_score + 10
+        else:
+         self.g_score = Node.g_score + 14
+         return g_score
+    def find_hscore(self,Node,other):
+        h_score=((self.xpos - other.xpos and self.ypos - other.ypos * 10))
+        return h_score 
+    def find_fscore(self,Node,other):
+        f_score = g_score + h_score
+        return f_score
+def main():
+    g = Graph(10)
+    a = Node(100)
     
-
         
 
+main()
