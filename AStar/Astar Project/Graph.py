@@ -21,15 +21,23 @@ class Node(object):
         self.h_score
         self.f_score
     def find_neighbors(self,graph):
-        valid_neighbors = []
-        valid_neighbors.append(guid(1) - self.dims)#top_neighbor
-        valid_neighbors.append(guid(2) + self.dims)#bot_neighbor
-        valid_neighbors.append(guid(3) - 1)#left_neighbor
-        valid_neighbors.append(guid(4) + 1)#right_neighbor
-        valid_neighbors.append(guid(5) - self.dims - 1)#top_left
-        valid_neighbors.append(guid(6) - self.dims + 1)#top_right
-        valid_neighbors.append(guid(7) + self.dims - 1)#bot_left
-        valid_neighbors.append(guid(8) + self.dims + 1)#bot_right
+        top_neighbor=self.position-self.dims
+        bot_neighbor=self.position+self.dims
+        left_neighbor=self.position-1
+        right_neighbor=self.position+1
+        top_left_neighbor=top_neighbor-1
+        top_right_neighbor=top_neighbor+1
+        bot_left_neighbor=bot_neighbor-1
+        bot_right_neighbor=bot_neighbor+1
+        valid_neighbors=[]
+        valid_neighbors.append(top_neighbor)
+        valid_neighbors.append(top_left_neighbor)
+        valid_neighbors.append(top_right_neighbor)
+        valid_neighbors.append(bot_neighbor)
+        valid_neighbors.append(bot_left_neighbor)
+        valid_neighbors.append(bot_right_neighbor)
+        valid_neighbors.append(left_neighbor)
+        valid_neighbors.append(right_neighbor)
     def find_gscore(self,Node,g_score):
         if ((self.postion.xpos == Node.position.xpos and self.postion.ypos != Node.position.ypos) or
         (self.postion.xpos != Node.position.xpos and self.postion.ypos == Node.position.ypos)):
@@ -41,15 +49,15 @@ class Node(object):
         h_score=((self.xpos - other.xpos and self.ypos - other.ypos * 10))
         return h_score 
     def find_fscore(self,Node,f_score):
-        f_score = g_score + h_score
+        self.f_score = g_score + h_score
         return f_score
 def main():
     g = Graph(10)
     a = Node(100)
-    n.find_neighbors(15)
-    jk.find_gscore()
-    jk.find_hscore()
-    jk.find_fscore()
+    n.find_neighbors(25)
+    jk.find_gscore(25)
+    jk.find_hscore(25)
+    jk.find_fscore(25)
     
         
 
