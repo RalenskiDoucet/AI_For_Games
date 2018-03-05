@@ -28,3 +28,8 @@ class Vector2(object):
 			'''A function that normalizes a vector.'''
 			new_vector = Vector2(self.xpos / self.magnitude(), self.ypos / self.magnitude())
 			return new_vector
+	#implent override for comaprison
+	def __eq__(self, other):
+		'''A function that overloads the compairson operator.'''
+		return self.xpos == other.xpos and self.ypos == other.ypos
+		
