@@ -1,5 +1,5 @@
 '''A class that generates a graph and nodes in the graph.'''
-from AStar import Node
+from AStar import Astar
 from vector2 import Vector2
 class Graph(object):
     def __init__(self, dims):
@@ -20,6 +20,7 @@ class Node(object):
         self.h_score = 0
         self.f_score = 0
         self.parent = None
+        self.is_traversable = True
 
     def find_neighbors(self,graph):
         valid_neighbors = [(self.position + Vector2(0, 1)), #Top_neighbor
