@@ -68,10 +68,7 @@ class Astar:
 
 def main():
     b = Graph(10)
-    c = b.nodes[0].find_neighbors(b)
-    b[0].calculate_g_score(b.nodes[0])
-    b[1].calculate_g_score(b.nodes[0])
-    b[2].calculate_g_score(b.nodes[0])   
+    c = b.nodes[0].find_neighbors()
     a = Astar()  
 
              
