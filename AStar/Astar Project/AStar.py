@@ -1,8 +1,7 @@
 '''A class for the node needed in Astar.'''
 from vector2 import Vector2 
-from GraphAndNodeClass import Graph
 from GraphAndNodeClass import Node
-
+from GraphAndNodeClass import Graph
 class Astar:
     def __init__(self,search_space):
         self.search_space = search_space
@@ -10,8 +9,7 @@ class Astar:
         self.open_list = []
         self.goal_node = None
         self.start_node = None
-
-    def sort_open(self):
+    def sort_open_list(self):
         #sorts open list by fscore
         #compare the value in the list to every other putting the smaller value
         for i in range(0,len(self.open_list)):
@@ -23,9 +21,9 @@ class Astar:
                     self.open_list[i] = self.open_list[j]
                     self.open_list[j] = temp
 
-    def A_star(self,start_Node,goal_Node, search_space):
-        self.start_node = start_Node
-        self.goal_node = goal_Node
+    def A_star(self,start_node,goal_node, search_space):
+        self.start_node = start_node
+        self.goal_node = goal_node
         current = self.start_node        
         #step1 add starting node to the open list.
         self.open_list.append(current)
@@ -37,32 +35,44 @@ class Astar:
             # 2b switch the lowest f score to the closed list.
             self.open_list.remove(current)
             self.closed_list.append(current)
-            
+            if self.closed_list.__contains__(self.goal_node):
+                return self.draw_path()
             # 2c Get neighbors.
             temp = current.find_neighbors(search_space)
             # 2d Loop through all neighbors.
             for node in temp:                
                 #if non transvisble or in closed list
-                if not node.is_traversable or node is in self.closed_list:
-                     continue
+                if not node.is_traversable or self.closed_list.__contains__(node):
+                    continue
                 #otherwise if not in the openlist
-                if node is not in open_list:
-                    open_list.append(node)
+                    if not self.open_list.__contains__(node):
+                        self.open_list.append(node)
                 #then calculate g,h,f, and score                
-                node.calculate_g_score(current)
-                node.calculate_h_score(goal_node)
-                node.calculate_f_score()
+                    node.calculate_g_score(current)
+                    node.calculate_h_score(goal_node)
+                    node.calculate_f_score()
                 #add to open list
                  #if in the open list check path by compareing g scores
                 #if in closed list break out of the Loop
-                if goal_node is in closed_list
-                    break
-            #if goal in closed return path
-    def draw_path(self,goal_node,closed_list):
-            if self.goal_node is in closed_list:
-                return path
-            if self.goal_node is not in closed_list:
-                return node.parent
-               
-              
+                    if self.closed_list.__contains__(goal_node):
+                        break
+            #if goal in closed list return path
+    def draw_path(self):
+        for node in self.open_list:
+            path = []
+            path.append(node)
+        if self.closed_list.__contains__(self.closed_list):
+            return path
+            
+            
 
+def main():
+    b = Graph(10)
+    c = b.nodes[0].find_neighbors(b)
+    b[0].calculate_g_score(b.nodes[0])
+    b[1].calculate_g_score(b.nodes[0])
+    b[2].calculate_g_score(b.nodes[0])   
+    a = Astar()  
+
+             
+main()

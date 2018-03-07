@@ -1,5 +1,4 @@
 '''A class that generates a graph and nodes in the graph.'''
-from AStar import Astar
 from vector2 import Vector2
 class Graph(object):
     def __init__(self, dims):
