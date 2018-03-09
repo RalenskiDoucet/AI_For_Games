@@ -58,11 +58,12 @@ class Astar:
                         break
             #if goal in closed list return path
     def draw_path(self):
-        for node in self.open_list:
-            path = []
-            path.append(node)
-        if self.closed_list.__contains__(self.closed_list):
-            return path
+             paths = []
+        while self.current_node.parent is not None:
+            paths.append(self.current_node)
+            self.current_node = self.current_node.parent
+        paths.append(self.current_node.parent)
+        self.paths = paths
             
             
 
