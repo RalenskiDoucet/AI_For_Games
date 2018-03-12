@@ -10,7 +10,7 @@ class Astar:
         self.goal_node = None
         self.start_node = None
         self.paths = []
-        self.current_node = Node
+        self.current_node
     def sort_open_list(self):
         #sorts open list by fscore
         #compare the value in the list to every other putting the smaller value
@@ -66,6 +66,7 @@ class Astar:
                 paths.append(self.current_node)
                 paths.append(self.current_node.parent)
                 self.paths = paths
+                return paths
             
             
 
