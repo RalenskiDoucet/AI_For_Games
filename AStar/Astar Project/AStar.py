@@ -9,6 +9,8 @@ class Astar:
         self.open_list = []
         self.goal_node = None
         self.start_node = None
+        self.paths = []
+        self.current_node = Node
     def sort_open_list(self):
         #sorts open list by fscore
         #compare the value in the list to every other putting the smaller value
@@ -30,7 +32,7 @@ class Astar:
         #step2 start Loop while open list is not empty.
         while self.open_list:            
             #2a Look for lowest f score in open list.
-            self.sort_open()
+            self.sort_open_list()
             current = self.open_list[0]
             # 2b switch the lowest f score to the closed list.
             self.open_list.remove(current)
@@ -45,32 +47,32 @@ class Astar:
                 if not node.is_traversable or self.closed_list.__contains__(node):
                     continue
                 #otherwise if not in the openlist
-                    if not self.open_list.__contains__(node):
-                        self.open_list.append(node)
+                if not self.open_list.__contains__(node):
+                    self.open_list.append(node)
                 #then calculate g,h,f, and score                
-                    node.calculate_g_score(current)
-                    node.calculate_h_score(goal_node)
-                    node.calculate_f_score()
+                node.calculate_g_score(current)
+                node.calculate_h_score(goal_node)
+                node.calculate_f_score()
                 #add to open list
                  #if in the open list check path by compareing g scores
                 #if in closed list break out of the Loop
-                    if self.closed_list.__contains__(goal_node):
+                if self.closed_list.__contains__(goal_node):
                         break
             #if goal in closed list return path
     def draw_path(self):
-             paths = []
-        while self.current_node.parent is not None:
-            paths.append(self.current_node)
-            self.current_node = self.current_node.parent
-        paths.append(self.current_node.parent)
-        self.paths = paths
+            paths = []
+            while self.current_node.parent is not None:
+                self.current_node = self.current_node.parent
+                paths.append(self.current_node)
+                paths.append(self.current_node.parent)
+                self.paths = paths
             
             
 
 def main():
-    b = Graph(10)
-    c = b.nodes[0].find_neighbors()
-    a = Astar()  
+    b = Graph(10)    
+    a = Astar(b)
+    a.A_star(b.nodes[0], b.nodes[99], b)  
 
              
 main()
