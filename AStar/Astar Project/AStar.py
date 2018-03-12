@@ -10,7 +10,6 @@ class Astar:
         self.goal_node = None
         self.start_node = None
         self.paths = []
-        self.current_node
     def sort_open_list(self):
         #sorts open list by fscore
         #compare the value in the list to every other putting the smaller value
@@ -61,7 +60,7 @@ class Astar:
             #if goal in closed list return path
     def draw_path(self):
             paths = []
-            while self.current_node.parent is not None:
+            while current_node.parent is not None:
                 self.current_node = self.current_node.parent
                 paths.append(self.current_node)
                 paths.append(self.current_node.parent)
