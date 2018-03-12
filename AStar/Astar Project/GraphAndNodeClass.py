@@ -48,6 +48,7 @@ class Node(object):
                 self.g_score = other.g_score + 10
             else:
                 self.g_score = other.g_score + 14
+                self.set_parent(other)
         elif self.parent is not None:
             tentative_g = self.g_score
             if ((self.position.xpos is other.position.xpos and self.position.ypos is not other.position.ypos)
