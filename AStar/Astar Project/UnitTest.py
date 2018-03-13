@@ -1,7 +1,7 @@
-from A_Star.graph import Graph
-from A_Star.a_star import AStar
-from A_Star.vector2 import Vector2
+from vector2 import Vector2
+from A_Star import Astar
 import random
+
 
 #DO NOT MODIFY
 class Node(object):
@@ -181,13 +181,7 @@ def test_function(func):
 
 def main():
     '''the main'''
-    test = AStar(Graph(10, 10))
-    num_passed = 0
-    num_test = 10
-    for i in range(num_test):
-        G = shuffle_search_space()
-        verdict = test_function(AStar)
-        num_passed = num_passed + verdict
-    print str.format("Number of Test::{0} Number Passed::{1}", num_test, num_passed)
+    a_star = Astar()
+    test_function(a_star.A_star)
 
 main()

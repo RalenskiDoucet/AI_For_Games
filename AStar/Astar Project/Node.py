@@ -1,18 +1,5 @@
-'''A class that generates a graph and nodes in the graph.'''
 from vector2 import Vector2
-class Graph(object):
-    def __init__(self, dims):
-        self.width = dims
-        self.height = dims
-        self.totalsize = self.width * self.height
-        self.nodes = []
-        id = 0
-        for i in range(0, self.height):    
-            for y in range(0, self.width):
-                n = Node(Vector2(i,y))                
-                self.nodes.append(n)    
-        
-
+from GraphAndNodeClass import Graph
 class Node(object):
     def __init__(self, pos):        
         self.position = pos
@@ -21,29 +8,16 @@ class Node(object):
         self.f_score = 0
         self.parent = None
         self.is_traversable = True
-        self.neighbors = None
-        self.is_goal = False
-        self.is_start = False
 
     def find_neighbors(self,graph):
-        valid_neighbors = []
-        top = (self.position + Vector2(0, 1)) #Top_neighbor
-        bottom = (self.position + Vector2(0, -1)) #Bottom_neighbor
-        left = (self.position + Vector2(-1, 0)) #Left_neighbor
-        right = (self.position + Vector2(1, 0)) #Right_neighbor
-        top_right = (self.position + Vector2(1, 1)) #Top Right_neighbor
-        top_left = (self.position + Vector2(-1, 1)) #Top Left_neighbor
-        bottom_right = (self.position + Vector2(1, -1)) #Bottom Right_neighbor
-        bottom_left = (self.position + Vector2(-1, -1)) #Bottom Left_neighbor
-        valid_neighbors.append(top)
-        valid_neighbors.append(bottom)
-        valid_neighbors.append(left)
-        valid_neighbors.append(right)
-        valid_neighbors.append(top_left)
-        valid_neighbors.append(top_right)
-        valid_neighbors.append(bottom_left)
-        valid_neighbors.append(bottom_right)
-        
+        valid_neighbors = [(self.position + Vector2(0, 1)), #Top_neighbor
+                          (self.position + Vector2(0, -1)), #Bottom_neighbor
+                          (self.position + Vector2(-1, 0)), #Left_neighbor
+                          (self.position + Vector2(1, 0)), #Right_neighbor
+                          (self.position + Vector2(1, 1)), #Top Right_neighbor
+                          (self.position + Vector2(-1, 1)), #Top Left_neighbor
+                          (self.position + Vector2(1, -1)), #Bottom Right_neighbor
+                          (self.position + Vector2(-1, -1))] #Bottom Left_neighbor
         neighbors = []
         for n in graph.nodes:
             for pos in valid_neighbors:
@@ -88,15 +62,3 @@ class Node(object):
 
     def set_not_traversable(self):
         self.is_traversable = False
-
-def main():
-    g = Graph(10)    
-    a = g.nodes[0].find_neighbors(g)
-    a[0].calculate_g_score(g.nodes[0])
-    a[1].calculate_g_score(g.nodes[0])
-    a[2].calculate_g_score(g.nodes[0])
-    b = 0;
-    
-        
-
-main()

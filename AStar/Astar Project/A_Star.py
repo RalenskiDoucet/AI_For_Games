@@ -3,14 +3,15 @@ from vector2 import Vector2
 from GraphAndNodeClass import Node
 from GraphAndNodeClass import Graph
 class Astar:
-    def __init__(self,search_space):
-        self.search_space = search_space
+    def __init__(self):
+        self.search_space = None
         self.closed_list = []
         self.open_list = []
         self.goal_node = None
         self.start_node = None
         self.paths = []
         self.current_node = None
+        
     def sort_open_list(self):
         #sorts open list by fscore
         #compare the value in the list to every other putting the smaller value
@@ -71,7 +72,7 @@ class Astar:
 
 def main():
     b = Graph(10)    
-    a = Astar(b)
+    a = Astar()
     path = a.A_star(b.nodes[0], b.nodes[99], b)  
 
 
