@@ -182,6 +182,7 @@ def test_function(func):
 def main():
     '''the main'''
     a_star = Astar()
-    test_function(a_star.A_star)
+    for i in range(0,500):
+        test_function(a_star.A_star)
 
 main()

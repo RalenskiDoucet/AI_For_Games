@@ -41,11 +41,11 @@ class Astar:
             if self.closed_list.__contains__(self.goal_node):
                 return self.draw_path()
             # 2c Get neighbors.
-            temp = current.find_neighbors(search_space)
+            temp = self.find_neighbors(current, search_space)
             # 2d Loop through all neighbors.
             for node in temp:                
                 #if non transvisble or in closed list
-                if not node.is_traversable or self.closed_list.__contains__(node):
+                if not node.traversable or self.closed_list.__contains__(node):
                     continue
                 #otherwise if not in the openlist
                 if not self.open_list.__contains__(node):
@@ -68,13 +68,34 @@ class Astar:
             current = current.parent
         return path
             
-            
+    def find_neighbors(self, node, graph):
+        valid_neighbors = []
+        top = (node.position + Vector2(0, 1)) #Top_neighbor
+        bottom = (node.position + Vector2(0, -1)) #Bottom_neighbor
+        left = (node.position + Vector2(-1, 0)) #Left_neighbor
+        right = (node.position + Vector2(1, 0)) #Right_neighbor
+        top_right = (node.position + Vector2(1, 1)) #Top Right_neighbor
+        top_left = (node.position + Vector2(-1, 1)) #Top Left_neighbor
+        bottom_right = (node.position + Vector2(1, -1)) #Bottom Right_neighbor
+        bottom_left = (node.position + Vector2(-1, -1)) #Bottom Left_neighbor
+        valid_neighbors.append(top)
+        valid_neighbors.append(left)
+        valid_neighbors.append(right)
+        valid_neighbors.append(bottom)
+        valid_neighbors.append(top_left)
+        valid_neighbors.append(top_right)
+        valid_neighbors.append(bottom_left)
+        valid_neighbors.append(bottom_right)   
+        
+        neighbors = []
+        for n in graph:
+            for pos in valid_neighbors:
+                if n.position == pos:
+                    neighbors.append(n)
+        return neighbors
 
 def main():
     b = Graph(10)    
     a = Astar()
-    path = a.A_star(b.nodes[0], b.nodes[99], b)  
-
-
-             
-main()
+    path = a.A_star(b.nodes[0], b.nodes[99], b)
+    a = 0 

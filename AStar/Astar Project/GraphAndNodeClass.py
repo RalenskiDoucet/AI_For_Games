@@ -36,13 +36,13 @@ class Node(object):
         bottom_right = (self.position + Vector2(1, -1)) #Bottom Right_neighbor
         bottom_left = (self.position + Vector2(-1, -1)) #Bottom Left_neighbor
         valid_neighbors.append(top)
-        valid_neighbors.append(bottom)
         valid_neighbors.append(left)
         valid_neighbors.append(right)
+        valid_neighbors.append(bottom)
         valid_neighbors.append(top_left)
         valid_neighbors.append(top_right)
         valid_neighbors.append(bottom_left)
-        valid_neighbors.append(bottom_right)
+        valid_neighbors.append(bottom_right)   
         
         neighbors = []
         for n in graph.nodes:
@@ -96,7 +96,3 @@ def main():
     a[1].calculate_g_score(g.nodes[0])
     a[2].calculate_g_score(g.nodes[0])
     b = 0;
-    
-        
-
-main()
