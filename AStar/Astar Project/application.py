@@ -37,4 +37,4 @@ def main():
     s.draw()
     l = Line(Vector2(50,50),(75,75,75),[1,50] ,pygame)
 
-main()
+main() 
