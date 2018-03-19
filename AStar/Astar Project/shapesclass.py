@@ -101,6 +101,6 @@ class Text(Shape):
         render = self.font.render(self.text, 0, (self.color[0], self.color[1], self.color[2]))
         self.draw_surface.blit(render, (rect[0] + self.position.x_pos, rect[1] + self.position.y_pos))
 
-
+ 
       
 
