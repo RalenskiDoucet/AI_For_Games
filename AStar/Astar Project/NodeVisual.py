@@ -70,3 +70,10 @@ class NodeVisual(object):
                     self.node.traversable = not self.node.traversable            
         else:
             self.is_hoovered = False
+    def draw_nodes(self,Graph,Astar,x_pos,y_pos,node):
+  
+        for x in range (0,Graph.dims.width.x_pos * x_pos):
+            for y in range(0,Graph.dims.height.y_pos * y_pos):
+                count = 0
+                NodeVisual(node,(1080,720),1,pygame)
+                
