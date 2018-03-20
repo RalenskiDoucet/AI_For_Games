@@ -4,7 +4,7 @@ from GraphAndNodeClass import Node
 from GraphAndNodeClass import Graph
 class Astar:
     def __init__(self):
-        self.search_space = None
+        self.Astar_graph = None
         self.closed_list = []
         self.open_list = []
         self.goal_node = None
@@ -24,7 +24,7 @@ class Astar:
                     self.open_list[i] = self.open_list[j]
                     self.open_list[j] = temp
 
-    def A_star(self,start_node,goal_node, search_space):
+    def A_star(self,start_node,goal_node, Astar_graph):
         self.start_node = start_node
         self.goal_node = goal_node
         current = self.start_node        
@@ -41,7 +41,7 @@ class Astar:
             if self.closed_list.__contains__(self.goal_node):
                 return self.draw_path()
             # 2c Get neighbors.
-            temp = self.find_neighbors(current, search_space)
+            temp = self.find_neighbors(current, Astar_graph)
             # 2d Loop through all neighbors.
             for node in temp:                
                 #if non transvisble or in closed list
