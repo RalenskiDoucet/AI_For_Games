@@ -19,4 +19,5 @@ class Graph_Visuals(object):
             for y in range ( 0, self.Astar_graph * self.node_offset, self.node_offset):
                 count ++
     def get_visuals(self, NodeVisual):
+        for x in range(0,self.Astar_graph)
         return NodeVisual
