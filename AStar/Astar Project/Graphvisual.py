@@ -13,11 +13,21 @@ class Graph_Visuals(object):
         self.node_visual = []# A list of visual nodes.
         self.Astar_graph = Astar_graph
             
-    def draw_nodes_to_surface(self):
+    def draw_nodes_to_surface(self,Node,Graph):#Function to get the nodes to show in the pygame window.
         count = 0 
-        for x in range(0,self.Astar_graph * self.node_offset, self.node_offset ):
-            for y in range ( 0, self.Astar_graph * self.node_offset, self.node_offset):
-                count ++
+        for x in range(0, self.graph.dims * self.node_offset, self.node_offset): 
+            for y in range(0, self.graph.dims * self.node_offset, self.node_offset):
+             node = NodeVisual(self.graph[count], Vector2(x, y), [0,0], self.draw_surface) 
+                if not Node.node.traversable:
+    
     def get_visuals(self, NodeVisual):
         for x in range(0,self.Astar_graph)
         return NodeVisual
+    
+    def update(self,events):
+        for Node in self.node_visual:
+            Node.update(events)
+            if NodeVisual.is_hoovered:
+                self.selected_node
+
+

@@ -1,3 +1,6 @@
+'''File: NodeVisual.py
+   Author: Dylan Guidry
+   Date: 1/26/2018'''
 import pygame
 from shapesclass import Rectangle
 from shapesclass import Line
