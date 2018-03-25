@@ -13,6 +13,7 @@ class Astar:
         self.current_node = None
         
     def sort_open_list(self):
+'''A function that sorts the open list using elements of the Astar Algorithim.'''
         #sorts open list by fscore
         #compare the value in the list to every other putting the smaller value
         for i in range(0,len(self.open_list)):
@@ -25,6 +26,7 @@ class Astar:
                     self.open_list[j] = temp
 
     def A_star(self,start_node,goal_node, Astar_graph):
+'''A  until function that loops and does the astar algorithim until a path to the goal node is foun.'''
         self.start_node = start_node
         self.goal_node = goal_node
         current = self.start_node        

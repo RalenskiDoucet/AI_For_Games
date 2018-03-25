@@ -1,6 +1,6 @@
-'''A class that generates a graph and nodes in the graph.'''
 from vector2 import Vector2
 class Graph(object):
+    '''A class that defines the properties of a graph.'''
     def __init__(self, dims):
         self.width = dims
         self.height = dims
@@ -12,8 +12,8 @@ class Graph(object):
                 n = Node(Vector2(i,y))                
                 self.nodes.append(n)    
         
-
 class Node(object):
+    '''A class created to define the properties of a node.'''
     def __init__(self, pos):        
         self.position = pos
         self.g_score = 0
@@ -26,6 +26,8 @@ class Node(object):
         self.is_start = False
 
     def find_neighbors(self,graph):
+         '''Gets the neighbors of the node. Used to generate the correct path for the user to
+    test against'''
         valid_neighbors = []
         top = (self.position + Vector2(0, 1)) #Top_neighbor
         bottom = (self.position + Vector2(0, -1)) #Bottom_neighbor
@@ -52,10 +54,18 @@ class Node(object):
         return neighbors
 
     def set_parent(self, other):
+             '''Attempts to change the value of the parent variable. If the value is
+        None the parent is automaticly set to the value of node passed in. Otherwise
+        a new G score is calcualted and if it is cheaper than the current the parent
+        is changed to the node passed in and the G score is modified to reflect the
+        change in parents'''
         self.parent = other
         return self.parent
         
     def calculate_g_score(self, other):
+          '''Calculates the movement cost to move from nodes parent to it self. If the
+        movement is horizontal or vertical the cost is parent's G score + 10. If the
+        movement is diagonal the cost is parent's G score + 14'''    
         if self.parent is None:
             if ((self.position.xpos is other.position.xpos and self.position.ypos is not other.position.ypos)
             or (self.position.xpos is not other.position.xpos and self.position.ypos is other.position.ypos)):
@@ -75,18 +85,20 @@ class Node(object):
                 self.set_parent(other)
 
     def calculate_h_score(self, other):
+         '''Calculates the estimated movement cost to move from this node to the goal.'''
         x_distance = abs(other.position.xpos - self.position.xpos)
         y_distance = abs(other.position.ypos - self.position.ypos)
         total = x_distance + y_distance
         self.h_score = total * 10
         return self.h_score
 
-
     def calculate_f_score(self):
+          '''Calculates the fscore which is the sum of the H score and G score of the node'''
         self.f_score = self.g_score + self.h_score
         return self.f_score
 
     def set_not_traversable(self):
+        '''Makes a certain selected spot nontransversible.'''
         self.is_traversable = False
 
 def main():
