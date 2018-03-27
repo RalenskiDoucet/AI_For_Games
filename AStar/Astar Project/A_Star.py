@@ -13,7 +13,7 @@ class Astar:
         self.current_node = None
         
     def sort_open_list(self):
-'''A function that sorts the open list using elements of the Astar Algorithim.'''
+#'''A function that sorts the open list using elements of the Astar Algorithim.'''
         #sorts open list by fscore
         #compare the value in the list to every other putting the smaller value
         for i in range(0,len(self.open_list)):
@@ -26,7 +26,7 @@ class Astar:
                     self.open_list[j] = temp
 
     def A_star(self,start_node,goal_node, Astar_graph):
-'''A  until function that loops and does the astar algorithim until a path to the goal node is foun.'''
+#'''A function that loops and does the astar algorithim until a path to the goal node is found.'''
         self.start_node = start_node
         self.goal_node = goal_node
         current = self.start_node        
@@ -57,7 +57,7 @@ class Astar:
                 node.calculate_h_score(goal_node)
                 node.calculate_f_score()
                 #add to open list
-                 #if in the open list check path by compareing g scores
+                #if in the open list check path by compareing g scores
                 #if in closed list break out of the Loop
                 if self.closed_list.__contains__(goal_node):
                         break
