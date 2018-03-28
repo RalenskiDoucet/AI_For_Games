@@ -12,7 +12,7 @@ class Graph(object):
                 n = Node(Vector2(i,y))                
                 self.nodes.append(n)    
         
-class Node(object):
+class Node1(object):
     #'''A class created to define the properties of a node.'''
     def __init__(self, pos):        
         self.position = pos

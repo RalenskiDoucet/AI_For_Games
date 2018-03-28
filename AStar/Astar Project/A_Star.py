@@ -1,6 +1,6 @@
 '''A class for the node needed in Astar.'''
 from vector2 import Vector2 
-from GraphAndNodeClass import Node
+from GraphAndNodeClass import Node1
 from GraphAndNodeClass import Graph
 class Astar:
     def __init__(self):

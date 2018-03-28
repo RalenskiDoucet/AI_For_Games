@@ -5,7 +5,7 @@ from shapesclass import Rectangle
 from vector2 import Vector2
 from A_Star import Astar
 from GraphAndNodeClass import Graph
-from GraphAndNodeClass import Node
+from GraphAndNodeClass import Node1
 class Application(object):
     def __init__(self, step_delay):
         pygame.init()
